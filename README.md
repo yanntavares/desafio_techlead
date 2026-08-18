@@ -60,3 +60,11 @@ Isso sobe três serviços:
 | `frontend` | `desagio_techlead_front`| 3001   |
 
 A ordem de subida é `db` → `backend` → `frontend` (via `depends_on`).
+
+4. Acesso de Administrador:
+   
+Para entrar como administrador da aplicação, use essas credenciais:
+| Email                 | Senha        |
+| --------------------- | ------------ |
+| `admin@seedabit.org.br` | `=D&s4f1@`     |
+      
