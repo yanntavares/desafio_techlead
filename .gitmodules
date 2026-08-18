@@ -1,0 +1,6 @@
+[submodule "desafio_techlead_back"]
+	path = desafio_techlead_back
+	url = https://github.com/yanntavares/desafio_techlead_back.git
+[submodule "desafio_techlead_front"]
+	path = desafio_techlead_front
+	url = https://github.com/yanntavares/desafio_techlead_front.git
