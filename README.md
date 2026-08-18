@@ -29,13 +29,21 @@ Pré-requisito: Docker + Docker Compose.
    git submodule update --init --recursive
    ```
 
-2. Crie um `.env` na raiz do projeto com as credenciais do banco:
+2. Crie um `.env` na raiz do projeto com as variáveis abaixo:
 
-   ```
-   POSTGRES_USER=usuario
-   POSTGRES_PASSWORD=senha
-   POSTGRES_DB=nome_do_banco
-   ```
+   | Variável                 | Exemplo                             | Descrição                                                                    |
+   | ------------------------ | ------------------------------------ | ----------------------------------------------------------------------------- |
+   | `POSTGRES_USER`          | `usuario`                           | Usuário do Postgres criado na inicialização do container `db`                 |
+   | `POSTGRES_PASSWORD`      | `senha`                              | Senha desse usuário                                                           |
+   | `POSTGRES_DB`            | `nome_do_banco`                   | Nome do banco criado na inicialização                                         |
+   | `JWT_SECRET`             | `segredo`                           | Segredo de assinatura do access token (backend)                               |
+   | `JWT_EXPIRES_IN`         | `1d`                                 | Validade do access token                                                      |
+   | `JWT_REFRESH_SECRET`     | `segredo_atualização`            | Segredo de assinatura do refresh token                                        |
+   | `JWT_REFRESH_EXPIRES_IN` | `7d`                                 | Validade do refresh token                                                     |
+   | `NEXT_PUBLIC_API_URL`    | `http://host.docker.internal:3000`   | URL da API que o front-end (rodando no browser) usa para chamar o backend     |
+
+   `DATABASE_URL` não precisa ser definida à mão: o `docker-compose.yml` a
+   monta automaticamente a partir das três variáveis `POSTGRES_*`.
 
 3. Suba os containers:
 
