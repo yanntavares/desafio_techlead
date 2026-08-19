@@ -1,0 +1,26 @@
+name: CI/CD Local Guarda-Chuva
+
+on:
+  push:
+    branches: [ main ]
+  repository_dispatch:
+    types: [submodule_update]
+
+jobs:
+  deploy:
+    # A MÁGICA ESTÁ AQUI: Isso diz ao GitHub para procurar o seu computador
+    runs-on: self-hosted 
+    steps:
+      - name: Atualizar repositórios e subir o Docker
+        run: |
+          # 1. Coloque o caminho COMPLETO da pasta do projeto no seu PC
+          cd ~/projects/seed/desafio_techlead
+          
+          # 2. Puxa as atualizações do guarda-chuva
+          git pull origin main
+          
+          # 3. Puxa as atualizações de dentro dos submódulos
+          git submodule update --init --recursive --remote
+          
+          # 4. Reconstrói o Docker
+          docker compose up -d --build
